@@ -50,7 +50,8 @@ body::before {
 .nav-inner {
   max-width: 1140px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
-  height: 68px; padding: 0 28px;
+  height: auto; min-height: 68px; padding: 12px 28px;
+  flex-wrap: wrap; gap: 12px;
 }
 .nav-brand { display: flex; align-items: center; gap: 14px; }
 .nav-logo {
@@ -58,7 +59,7 @@ body::before {
   border: 2px solid var(--gold);
   overflow: hidden; background: var(--navy3);
   display: flex; align-items: center; justify-content: center;
-  font-size: 20px;
+  font-size: 20px; flex-shrink: 0;
 }
 .nav-logo img { width: 100%; height: 100%; object-fit: cover; }
 .nav-title { line-height: 1.25; }
@@ -72,7 +73,7 @@ body::before {
   font-weight: 700; font-size: 13px;
   padding: 9px 22px; border-radius: 99px;
   border: none; cursor: pointer; transition: opacity .2s;
-  text-decoration: none;
+  text-decoration: none; white-space: nowrap;
 }
 .nav-cta:hover { opacity: 0.85; }
 
@@ -575,15 +576,126 @@ select.form-input option { background: #0b1035; color: var(--white); }
 }
 
 /* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .nav-inner > div:last-child {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-title strong { font-size: 13px; }
+  .nav-title span { font-size: 10px; }
+}
+
+@media (max-width: 768px) {
+  .nav-inner {
+    min-height: 60px; padding: 10px 16px;
+  }
+  .nav-logo { width: 40px; height: 40px; font-size: 18px; }
+  .nav-title strong { font-size: 13px; }
+  .nav-title span { font-size: 10px; }
+  .nav-cta { padding: 8px 18px; font-size: 12px; }
+  
+  .cats-grid { grid-template-columns: 1fr; }
+  .cat-card { padding: 20px 18px; }
+  .cat-name { font-size: 18px; }
+  .info-strip { gap: 12px; }
+  .info-card { padding: 14px 16px; gap: 10px; }
+  .info-label { font-size: 9px; }
+  .info-value { font-size: 12px; }
+}
+
 @media (max-width: 600px) {
-  .hero { padding: 36px 16px 32px; }
-  .countdown-wrap { padding: 16px 18px; gap: 3px; }
-  .cd-num { font-size: 34px; }
-  .modal { border-radius: 18px; }
-  .modal-body { padding: 20px 18px; }
-  .pass-actions { flex-direction: column; }
-  .nav-inner { padding: 0 16px; }
-  .section { padding: 0 16px; }
-  .info-strip { padding: 0 16px; }
-  .leaderboard { padding: 16px; }
+  .nav-inner {
+    min-height: 56px; padding: 8px 12px;
+  }
+  .nav-logo { width: 36px; height: 36px; font-size: 16px; }
+  .nav-title { display: flex; align-items: center; }
+  .nav-title strong { font-size: 12px; }
+  .nav-title span { font-size: 9px; display: none; }
+  .nav-cta { padding: 7px 16px; font-size: 11px; }
+  
+  .hero { padding: 32px 14px 28px; }
+  .hero-bee-icon { font-size: 42px; margin-bottom: 8px; }
+  .hero-spelling { font-size: clamp(40px, 8vw, 60px); }
+  .hero-bee-word { font-size: clamp(48px, 10vw, 90px); }
+  .hero-champ { font-size: 11px; letter-spacing: 4px; margin: 10px 0 8px; }
+  .hero-tagline { font-size: 13px; margin-bottom: 28px; }
+  .hero-ctas { gap: 10px; margin-bottom: 40px; }
+  .btn-primary { font-size: 13px; padding: 12px 28px; }
+  .btn-outline { font-size: 13px; padding: 11px 24px; }
+  
+  .countdown-wrap { padding: 14px 12px; gap: 3px; border-radius: 16px; }
+  .cd-block { min-width: 56px; }
+  .cd-num { font-size: 28px; }
+  .cd-label { font-size: 8px; margin-top: 3px; }
+  .cd-sep { font-size: 24px; padding-bottom: 6px; margin-top: 8px; }
+  
+  .info-strip { 
+    grid-template-columns: 1fr; 
+    gap: 10px;
+    padding: 0 12px;
+    margin-bottom: 44px;
+  }
+  .info-card { padding: 12px 14px; gap: 10px; }
+  .info-icon { width: 36px; height: 36px; font-size: 16px; }
+  .info-label { font-size: 8px; }
+  .info-value { font-size: 11px; }
+  
+  .section { padding: 0 12px; margin-bottom: 56px; }
+  .section-header { margin-bottom: 32px; }
+  .section-eye { font-size: 10px; }
+  .section-title { font-size: clamp(22px, 4vw, 28px); }
+  
+  .cats-grid { grid-template-columns: 1fr; gap: 12px; }
+  .cat-card { padding: 18px 16px; }
+  .cat-card-top { margin-bottom: 10px; }
+  .cat-pill { font-size: 9px; padding: 3px 10px; }
+  .cat-trophy { font-size: 22px; }
+  .cat-name { font-size: 16px; margin-bottom: 2px; }
+  .cat-ages { font-size: 11px; margin-bottom: 10px; }
+  .cat-meta { gap: 10px; font-size: 10px; margin-bottom: 10px; }
+  .cat-cta { font-size: 11px; margin-top: 14px; padding: 8px; }
+  
+  .notice { padding: 12px 14px; gap: 10px; font-size: 12px; margin-bottom: 24px; }
+  
+  .leaderboard { padding: 14px; gap: 10px; margin-bottom: 60px; }
+  .leaderboard-item {
+    grid-template-columns: 36px 1fr auto;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+  .lb-rank {
+    width: 36px; height: 36px;
+    font-size: 18px;
+  }
+  .lb-name { font-size: 13px; }
+  .lb-classes { font-size: 10px; }
+  .lb-count { font-size: 16px; min-width: 45px; }
+  
+  .modal { max-width: 100%; border-radius: 16px; }
+  .modal-head { padding: 20px 18px 14px; }
+  .modal-head h2 { font-size: 20px; margin-bottom: 2px; }
+  .modal-head p { font-size: 12px; }
+  .modal-body { padding: 16px 14px; }
+  .form-group { margin-bottom: 14px; }
+  .form-label { font-size: 10px; margin-bottom: 6px; }
+  .form-input { font-size: 14px; padding: 10px 12px; }
+  .type-tabs { gap: 6px; margin-bottom: 16px; }
+  .type-tab { padding: 10px; font-size: 12px; }
+  .cat-grid { gap: 6px; }
+  .cat-opt { padding: 9px 8px; font-size: 10px; }
+  .btn-submit { font-size: 14px; padding: 12px; }
+  .form-note { font-size: 11px; }
+  
+  .pass-modal { max-width: 100%; }
+  .pass-actions { flex-direction: column; gap: 8px; }
+  .btn-dl, .btn-wa { font-size: 12px; padding: 10px; }
+  
+  .footer { padding: 32px 16px; }
+  .footer-logo { width: 44px; height: 44px; font-size: 18px; }
+  .footer-school { font-size: 18px; }
+  .footer-tag { font-size: 10px; margin-bottom: 16px; }
+  .footer-values { gap: 14px; margin-bottom: 16px; }
+  .footer-values span { font-size: 11px; }
+  .footer-copy { font-size: 10px; }
+  
+  .toast { font-size: 13px; padding: 12px 16px; bottom: 20px; right: 16px; max-width: 280px; }
 }
