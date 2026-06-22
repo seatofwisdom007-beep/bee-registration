@@ -360,67 +360,74 @@ function PassModal({ reg, onClose }: { reg: Registration; onClose: () => void })
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img src="/logo.jpg" alt="SOW Logo" />
                     </div>
-                    <div className="pass-school-name">Seat of Wisdom Group of Schools · Ibadan</div>
-                    <div className="pass-event">
-                      <div className="sp">SPELLING</div>
-                      <div className="bee" style={{ color: cat?.color || 'var(--gold)' }}>Bee 🐝</div>
+                    <div className="pass-head-center">
+                      <div className="pass-school-name">Seat of Wisdom Group of Schools · Ibadan</div>
+                      <div className="pass-event">
+                        <div className="sp">SPELLING</div>
+                        <div className="bee" style={{ color: cat?.color || 'var(--gold)' }}>Bee 🐝</div>
+                      </div>
+                      <div className="pass-year" style={{ color: cat?.color || 'var(--gold)' }}>Championship 2026</div>
                     </div>
-                    <div className="pass-year" style={{ color: cat?.color || 'var(--gold)' }}>Championship 2026</div>
+                    <div className="pass-head-spacer" />
                   </div>
                   <div className="pass-body">
-                    <div className="pass-photo" style={{ 
-                      background: cat ? `linear-gradient(135deg,${cat.color},${cat.color}88)` : 'linear-gradient(135deg, var(--gold), var(--gold2))',
-                      borderColor: cat?.color || 'var(--gold)'
-                    }}>
-                      {p.photo
-                        // eslint-disable-next-line @next/next/no-img-element
-                        ? <img src={p.photo} alt={p.name} />
-                        : init}
+                    <div className="pass-left">
+                      <div className="pass-photo" style={{ 
+                        background: cat ? `linear-gradient(135deg,${cat.color},${cat.color}88)` : 'linear-gradient(135deg, var(--gold), var(--gold2))',
+                        borderColor: cat?.color || 'var(--gold)'
+                      }}>
+                        {p.photo
+                          // eslint-disable-next-line @next/next/no-img-element
+                          ? <img src={p.photo} alt={p.name} />
+                          : init}
+                      </div>
+                      <div className="pass-reg">
+                        <div className="pass-reg-lbl">Registration Number</div>
+                        <div className="pass-reg-num" style={{ color: cat?.color || 'var(--gold)' }}>{p.regNum}</div>
+                      </div>
                     </div>
-                    <div className="pass-name">{p.name}</div>
-                    <div className="pass-cat-badge">
-                      <span style={{ background: cat ? cat.color + '22' : undefined, color: cat?.color }}>
-                        {cat?.emoji} {p.category}
-                      </span>
-                    </div>
-                    <div className="pass-grid">
-                      <div className="pass-cell">
-                        <div className="pass-cell-label">Date</div>
-                        <div className="pass-cell-val">8th July 2026</div>
+                    <div className="pass-right">
+                      <div className="pass-name">{p.name}</div>
+                      <div className="pass-cat-badge">
+                        <span style={{ background: cat ? cat.color + '22' : undefined, color: cat?.color }}>
+                          {cat?.emoji} {p.category}
+                        </span>
                       </div>
-                      <div className="pass-cell">
-                        <div className="pass-cell-label">Time</div>
-                        <div className="pass-cell-val">8:00 AM</div>
-                      </div>
-                      <div className="pass-cell">
-                        <div className="pass-cell-label">Stage</div>
-                        <div className="pass-cell-val" style={{ fontSize: 11 }}>{cat?.stage ?? '—'}</div>
-                      </div>
-                      <div className="pass-cell">
-                        <div className="pass-cell-label">Type</div>
-                        <div className="pass-cell-val">{p.type}</div>
-                      </div>
-                      {p.type === 'Supporter' && (
+                      <div className="pass-grid">
                         <div className="pass-cell">
-                          <div className="pass-cell-label">Attendance</div>
-                          <div className="pass-cell-val" style={{ fontSize: 12 }}>
-                            {p.attendanceMode === 'physical' ? '🏫 Physical' : '📱 Facebook Live'}
-                          </div>
+                          <div className="pass-cell-label">Date</div>
+                          <div className="pass-cell-val">8th July 2026</div>
                         </div>
-                      )}
-                    </div>
-                    <div className="pass-reg">
-                      <div className="pass-reg-lbl">Registration Number</div>
-                      <div className="pass-reg-num" style={{ color: cat?.color || 'var(--gold)' }}>{p.regNum}</div>
+                        <div className="pass-cell">
+                          <div className="pass-cell-label">Time</div>
+                          <div className="pass-cell-val">8:00 AM</div>
+                        </div>
+                        <div className="pass-cell">
+                          <div className="pass-cell-label">Stage</div>
+                          <div className="pass-cell-val" style={{ fontSize: 11 }}>{cat?.stage ?? '—'}</div>
+                        </div>
+                        <div className="pass-cell">
+                          <div className="pass-cell-label">Type</div>
+                          <div className="pass-cell-val">{p.type}</div>
+                        </div>
+                        {p.type === 'Supporter' && (
+                          <div className="pass-cell">
+                            <div className="pass-cell-label">Attendance</div>
+                            <div className="pass-cell-val" style={{ fontSize: 12 }}>
+                              {p.attendanceMode === 'physical' ? '🏫 Physical' : '📱 Facebook Live'}
+                            </div>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div className="pass-foot" style={{ 
                     borderTopColor: cat?.color || 'var(--gold)',
                     background: cat ? `${cat.color}0F` : 'rgba(245,197,24,0.06)'
                   }}>
-                    <p>Venue: School Hall, Tulip Campus, Gbopa</p>
-                    <strong style={{ color: cat?.color || 'var(--gold)' }}>Arrive by 7:30 AM for accreditation & seating</strong>
-                    <div className="pass-tags" style={{ color: cat ? `${cat.color}66` : 'rgba(245,197,24,0.4)' }}>#SOWSpellingBee2026 · #EducationTheBestLegacy · #SpellLearnLead</div>
+                    <div className="pass-foot-left">Venue: School Hall, Tulip Campus, Gbopa</div>
+                    <div className="pass-foot-center" style={{ color: cat?.color || 'var(--gold)' }}>Arrive by 7:30 AM for accreditation & seating</div>
+                    <div className="pass-foot-right" style={{ color: cat ? `${cat.color}66` : 'rgba(245,197,24,0.4)' }}>#SOWSpellingBee2026 · #EducationTheBestLegacy · #SpellLearnLead</div>
                   </div>
                 </div>
                 <div className="pass-actions">

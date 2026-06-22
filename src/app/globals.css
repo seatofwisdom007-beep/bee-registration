@@ -404,7 +404,7 @@ select.form-input option { background: #0b1035; color: var(--white); }
 .form-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 10px; }
 
 /* ─── PASS ─── */
-.pass-modal { max-width: 460px; }
+.pass-modal { max-width: 580px; }
 .pass-wrap {
   background: linear-gradient(160deg, #07112e 0%, #0f1c50 100%);
   border: 2px solid var(--gold); border-radius: 22px;
@@ -412,57 +412,88 @@ select.form-input option { background: #0b1035; color: var(--white); }
 }
 .pass-head {
   background: linear-gradient(135deg,#0b1540,#162060);
-  padding: 24px 22px 18px; text-align: center;
+  padding: 14px 22px; text-align: center;
   border-bottom: 2px solid var(--gold);
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  display: flex; flex-direction: row; align-items: center; gap: 16px;
+  justify-content: space-between;
 }
 .pass-logo {
-  width: 52px; height: 52px; border-radius: 50%;
+  width: 46px; height: 46px; border-radius: 50%;
   border: 2px solid var(--gold);
   background: var(--navy3); overflow: hidden;
   display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 4px;
+  font-size: 20px; flex-shrink: 0;
 }
 .pass-logo img { width: 100%; height: 100%; object-fit: cover; }
-.pass-school-name { font-size: 9px; letter-spacing: 2.5px; color: var(--gold); text-transform: uppercase; }
-.pass-event { font-family: 'Playfair Display', serif; }
-.pass-event .sp { font-size: 30px; font-weight: 900; color: var(--white); line-height: 1; }
-.pass-event .bee { font-size: 40px; font-weight: 900; color: var(--gold); line-height: 1; }
-.pass-year { font-size: 9px; letter-spacing: 3px; color: var(--gold2); text-transform: uppercase; }
-.pass-body { padding: 22px 22px 18px; }
+.pass-head-center {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 1;
+}
+.pass-school-name { font-size: 8px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
+.pass-event {
+  font-family: 'Playfair Display', serif;
+  display: flex; align-items: baseline; gap: 4px;
+}
+.pass-event .sp { font-size: 14px; font-weight: 900; color: var(--white); line-height: 1; }
+.pass-event .bee { font-size: 16px; font-weight: 900; color: var(--gold); line-height: 1; }
+.pass-year { font-size: 7px; letter-spacing: 2px; color: var(--gold2); text-transform: uppercase; }
+.pass-head-spacer { width: 46px; flex-shrink: 0; }
+.pass-body {
+  padding: 16px;
+  display: flex; flex-direction: row; gap: 18px;
+}
+.pass-left {
+  display: flex; flex-direction: column; align-items: center; gap: 8px; flex-shrink: 0;
+}
 .pass-photo {
-  width: 86px; height: 86px; border-radius: 50%;
+  width: 80px; height: 80px; border-radius: 50%;
   background: linear-gradient(135deg, var(--gold), var(--gold2));
   display: flex; align-items: center; justify-content: center;
-  font-size: 28px; font-weight: 900; color: var(--navy);
-  margin: 0 auto 14px; border: 3px solid var(--gold);
+  font-size: 26px; font-weight: 900; color: var(--navy);
+  border: 3px solid var(--gold);
   font-family: 'Playfair Display', serif; overflow: hidden;
 }
 .pass-photo img { width: 100%; height: 100%; object-fit: cover; }
-.pass-name { font-family:'Playfair Display',serif; font-size:21px; font-weight:900; color:var(--white); text-align:center; margin-bottom:6px; }
-.pass-cat-badge { text-align:center; margin-bottom:18px; }
-.pass-cat-badge span {
-  display: inline-block; font-size: 11px; font-weight: 700;
-  padding: 5px 16px; border-radius: 99px;
-  letter-spacing: .8px; text-transform: uppercase;
+.pass-reg {
+  text-align: center; width: 100%;
 }
-.pass-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.pass-reg-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px; font-weight: 900; color: var(--gold);
+}
+.pass-reg-lbl { font-size: 7px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; }
+.pass-right {
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.pass-name {
+  font-family:'Playfair Display',serif;
+  font-size: 18px; font-weight: 900; color: var(--white);
+  text-align: left; margin: 0;
+}
+.pass-cat-badge {
+  text-align: left;
+}
+.pass-cat-badge span {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 4px 12px; border-radius: 99px;
+  letter-spacing: 0.6px; text-transform: uppercase;
+}
+.pass-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+}
 .pass-cell {
   background: rgba(255,255,255,0.05); border-radius: 10px;
-  padding: 11px; text-align: center;
+  padding: 7px 10px; text-align: left;
 }
-.pass-cell-label { font-size: 9px; letter-spacing: 1.5px; color: var(--muted); text-transform: uppercase; margin-bottom: 3px; }
-.pass-cell-val { font-size: 13px; font-weight: 700; color: var(--white); }
-.pass-reg { text-align: center; }
-.pass-reg-num { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 900; color: var(--gold); }
-.pass-reg-lbl { font-size: 9px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase; }
+.pass-cell-label { font-size: 8px; letter-spacing: 1px; color: var(--muted); text-transform: uppercase; margin-bottom: 2px; }
+.pass-cell-val { font-size: 12px; font-weight: 700; color: var(--white); }
 .pass-foot {
   background: rgba(245,197,24,0.06); border-top: 1px solid rgba(245,197,24,0.18);
-  padding: 14px 22px; text-align: center;
+  padding: 10px 20px; 
+  display: flex; align-items: center; gap: 16px; justify-content: space-between;
 }
-.pass-foot p { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
-.pass-foot strong { color: var(--gold); font-size: 12px; }
-.pass-tags { font-size: 9px; color: rgba(245,197,24,0.4); letter-spacing: 1px; margin-top: 8px; }
+.pass-foot-left { font-size: 10px; color: var(--muted); }
+.pass-foot-center { font-size: 10px; color: var(--gold); font-weight: 600; }
+.pass-foot-right { font-size: 8px; color: rgba(245,197,24,0.4); letter-spacing: 1px; white-space: nowrap; }
 .pass-actions { display: flex; gap: 10px; margin-top: 18px; }
 .btn-dl {
   flex: 1; background: var(--gold); color: var(--navy);
