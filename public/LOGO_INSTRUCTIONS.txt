@@ -1,0 +1,2 @@
+Place your school logo here as logo.png
+Then update src/app/page.tsx to use /logo.png as the static image source.
