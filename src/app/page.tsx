@@ -516,6 +516,12 @@ export default function Home() {
         const response = await fetch('/api/registrations')
         const data = await response.json()
         
+        // Check if data is an array, if not it's an error response
+        if (!Array.isArray(data)) {
+          console.error('Invalid registration data format:', data)
+          return
+        }
+        
         const studentCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
         const allCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
         

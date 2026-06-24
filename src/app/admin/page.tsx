@@ -60,6 +60,15 @@ export default function AdminDashboard() {
     try {
       const response = await fetch('/api/registrations');
       const data = await response.json();
+      
+      // Check if data is an array, if not handle error response
+      if (!Array.isArray(data)) {
+        console.error('Invalid data format:', data);
+        alert('Failed to load registrations: Invalid response format');
+        setLoading(false);
+        return;
+      }
+      
       setRegistrations(data);
       
       const totalByCategory: Record<string, number> = {};
