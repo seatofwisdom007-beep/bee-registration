@@ -44,24 +44,54 @@ export async function GET() {
   try {
     const supabase = getSupabaseAdmin();
     
-    const { data, error } = await supabase
-      .from('registrations')
-      .select('*')
-      .order('created_at', { ascending: false });
+    let data: any, error: any;
+    try {
+      const result: any = await Promise.race([
+        supabase
+          .from('registrations')
+          .select('*')
+          .order('created_at', { ascending: false }),
+        new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Supabase timeout')), 8000)
+        )
+      ]);
+      
+      data = result.data;
+      error = result.error;
+    } catch (timeoutError: any) {
+      console.error('Supabase timeout or connection error:', timeoutError.message);
+      // Return empty array on timeout/connection error with 200 status
+      return NextResponse.json([], { 
+        status: 200,
+        headers: { 'X-Warning': 'Database temporarily unavailable' }
+      });
+    }
 
     if (error) {
+      console.error('Supabase query error:', error);
+      // If it's a connection/timeout error, return empty array
+      if (error.message?.includes('timeout') || error.message?.includes('connection')) {
+        return NextResponse.json([], { 
+          status: 200,
+          headers: { 'X-Warning': 'Database temporarily unavailable' }
+        });
+      }
+      
       return NextResponse.json(
-        { error: error.message },
+        { error: error.message || 'Failed to fetch registrations' },
         { status: 400 }
       );
     }
 
-    return NextResponse.json(data);
-  } catch (error) {
-    return NextResponse.json(
-      { error: 'Failed to fetch registrations' },
-      { status: 500 }
-    );
+    return NextResponse.json(data || []);
+  } catch (error: any) {
+    console.error('Registration fetch error:', error?.message || error);
+    
+    // Return empty array on any error to prevent 522 HTML from being returned
+    return NextResponse.json([], { 
+      status: 200,
+      headers: { 'X-Warning': 'Database service temporarily unavailable' }
+    });
   }
 }
 

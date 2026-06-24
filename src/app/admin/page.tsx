@@ -61,10 +61,9 @@ export default function AdminDashboard() {
       const response = await fetch('/api/registrations');
       const data = await response.json();
       
-      // Check if data is an array, if not handle error response
+      // Check if data is an array
       if (!Array.isArray(data)) {
         console.error('Invalid data format:', data);
-        alert('Failed to load registrations: Invalid response format');
         setLoading(false);
         return;
       }
@@ -92,7 +91,6 @@ export default function AdminDashboard() {
       });
     } catch (error) {
       console.error('Failed to fetch registrations:', error);
-      alert('Failed to load registrations');
     } finally {
       setLoading(false);
     }

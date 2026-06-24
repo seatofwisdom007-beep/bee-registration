@@ -513,13 +513,13 @@ export default function Home() {
   useEffect(() => {
     const fetchCounts = async () => {
       try {
-        const response = await fetch('/api/registrations')
-        const data = await response.json()
+        const response = await fetch('/api/registrations');
+        const data = await response.json();
         
-        // Check if data is an array, if not it's an error response
+        // Check if data is an array
         if (!Array.isArray(data)) {
-          console.error('Invalid registration data format:', data)
-          return
+          console.warn('Invalid registration data format');
+          return;
         }
         
         const studentCounts: Record<number, number> = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0 }
@@ -540,7 +540,7 @@ export default function Home() {
         setRegCounts(studentCounts)
         setTotalCounts(allCounts)
       } catch (error) {
-        console.error('Failed to fetch registration counts:', error)
+        console.error('Failed to fetch registration counts:', error);
       }
     }
 
